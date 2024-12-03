@@ -1,0 +1,99 @@
+1. Introduction à FOMM
+Le First Order Motion Model for Image Animation est un modèle basé sur les réseaux neuronaux qui permet de transformer des images fixes en animations en utilisant une séquence de mouvement. Il repose sur :
+
+La détection de points-clés (keypoints) dynamiques.
+La génération de mouvements à partir de ces points-clés.
+Lien vers l’article original : First Order Motion Model - Paper
+
+2. Prérequis : Configuration de l'environnement
+
+21.Installer Python et les bibliothèques nécessaires :
+
+Python 3.8+ est recommandé.
+NVIDIA GPU avec CUDA pour accélérer les calculs.
+PyTorch 1.9 ou supérieur.
+
+
+2.2 Cloner le dépôt officiel de FOMM :
+
+git clone https://github.com/AliaksandrSiarohin/first-order-model.git
+cd first-order-model
+
+
+2.3 Créer un environnement virtuel Python :
+
+python -m venv fomm_env
+source fomm_env/bin/activate  # sous Linux/macOS
+fomm_env\Scripts\activate     # sous Windows
+
+
+2.4Installer les dépendances :
+
+pip install -r requirements.txt
+
+	Les bibliothèques importantes incluent :
+
+	PyTorch : Pour l’entraînement des modèles.
+	NumPy : Manipulation des données.
+	OpenCV : Pour la manipulation d’images.
+	Imageio : Pour lire et écrire des vidéos.
+
+
+2.5 Télécharger les poids pré-entraînés : Les auteurs fournissent des modèles pré-entraînés.
+
+wget https://github.com/AliaksandrSiarohin/first-order-model/releases/download/v0.1/vox-cpk.pth.tar
+
+
+3. Structure des Données
+Le FOMM nécessite deux types d’entrée :
+
+Image source : Image fixe que tu veux animer.
+Vidéo de référence : Vidéo d'où le modèle extrait les mouvements pour animer l'image source.
+
+Structure des fichiers :
+data/
+  ├── source_image.png
+  ├── driving_video.mp4
+  └── checkpoints/
+       └── vox-cpk.pth.tar
+
+4. Exécution Basique du Modèle
+Voici un code Python pour exécuter FOMM et générer une vidéo animée à partir d'une image source et d'une vidéo de référence.
+
+Code : voir chatpt nouha projet machine Learning
+
+5. Résultats
+L’animation générée sera sauvegardée dans output/generated_video.mp4.
+La vidéo combine les mouvements de la vidéo de référence avec l’image source.
+6. Étapes d'Amélioration
+Pour personnaliser et améliorer ton projet :
+
+Ajouter un pipeline d'entraînement :
+
+Si tu veux entraîner FOMM sur ton propre jeu de données, prépare des images et des vidéos annotées pour l’entraînement.
+Personnalisation :
+
+Ajuste les hyperparamètres dans config/vox-256.yaml :
+Nombre de points-clés détectés.
+Taille des images.
+Synchronisation avec le texte :
+
+Intègre un modèle de synthèse vocale comme Tacotron 2 pour ajouter des dialogues en fonction des textes extraits du manga.
+Entraîner le modèle sur d'autres styles :
+
+Télécharge ou crée des jeux de données pour capturer les styles d'animation spécifiques à ton manga.
+7. Références
+FOMM GitHub Repository
+Original Paper
+Installation et Utilisation de PyTorch
+Étapes Suivantes
+Si tu veux approfondir certaines parties, comme :
+
+Ajouter des dialogues générés automatiquement.
+Personnaliser le modèle pour ton manga.
+Entraîner le modèle sur un style particulier.
+
+
+
+
+
